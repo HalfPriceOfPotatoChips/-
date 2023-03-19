@@ -170,6 +170,7 @@ Result ThreadPool::submitTask(std::shared_ptr<Task> sp)
 
 void ThreadPool::threadFunc(int threadid)
 {
+	//while (isPoolRunning_)
 	while (true)
 	{
 		auto lastTime = std::chrono::high_resolution_clock().now();;
@@ -182,6 +183,7 @@ void ThreadPool::threadFunc(int threadid)
 
 			//std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
+			// 锁 + 双重判断，解决死锁
 			// 使用 while 能合并线程池关闭的两次判断，复用代码
 			while (curTaskSize_ == 0 && isPoolRunning_) {
 				//if (curTaskSize_ == 0) {
