@@ -4,7 +4,7 @@
 
 const int TASK_MAX_THRESHHOLD = INT32_MAX;
 const int THREAD_MAX_THRESHHOLD = 1024;
-const int THREAD_MAX_IDLE_TIME = 1; // 单位：秒
+const int THREAD_MAX_IDLE_TIME = 60; // 单位：秒
 
 
 Semaphore::Semaphore(int limit)
